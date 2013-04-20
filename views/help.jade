@@ -1,0 +1,126 @@
+!!! 5
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title node-image-resizer
+    style(type='text/css', media='screen')
+      body {
+        margin: 50px;
+        font: 15px/1.5em Helvetica, Arial, sans-serif;
+      }
+      #wrapper {
+        width: 75%;
+      }
+      code {
+        font-size: 13px;
+        background: #F8F8F8;
+        border: 1px solid #EAEAEA;
+        padding: 1px;
+        display: inline-block;
+        margin: 0 2px;
+        line-height: 1em;
+      }
+      h2 {
+        border-bottom: 1px solid #CCCCCC;
+        padding-bottom: 0.2em;
+      }
+  body#index.home
+    #wrapper
+      h1#asimplenode.jsimageresizeservice A simple node.js image resize service
+      p
+        | usage: http://serveraddress/
+        code resize
+        | /
+        code output
+        | /
+        code url
+      h2#options Options
+      p
+        strong
+          code resize
+      ul
+        li
+          code width
+          | x
+          code height
+          | stretch to dimensions
+        li
+          | c
+          code width
+          | x
+          code height
+          | [
+          code gravity
+          | ] crop to dimensions with optional gravity
+          br
+          | Default
+          code gravity
+          | is
+          code c
+          | for center
+          br
+          | Choices include
+          code c
+          | ,
+          code n
+          | ,
+          code ne
+          | ,
+          code e
+          | ,
+          code se
+          | ,
+          code s
+          | ,
+          code sw
+          | ,
+          code w
+          | ,
+          code nw
+        li
+          | h
+          code height
+          | , h160: scale proportional to height
+        li
+          | w
+          code width
+          | , w120: scale proportional to width
+      p
+        strong
+          code output
+      ul
+        li
+          code format
+          br
+          | Default
+          code format
+          | is
+          code jpg
+          | Choices include
+          code jgp
+          | and
+          code png
+        li
+          code jpg
+          | ,
+          code quality
+          br
+          | Optional quality setting for
+          code jpg
+          | format (Defaults to 80)
+      p
+        strong
+          code url
+      ul
+        li A valid URL to the source image to be resized
+      h2#examples Examples
+      p
+        code http://serveraddress/120x160/jpg/http://domain.com/image.jpg
+        br
+        code http://serveraddress/c300x300/jpg/http://domain.com/image.jpg
+        br
+        code http://serveraddress/c300x300n/jpg/http://domain.com/image.jpg
+        br
+        code http://serveraddress/h300/jpg/http://domain.com/image.jpg
+        br
+        code http://serveraddress/w300/jpg,100/http://domain.com/image.jpg
