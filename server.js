@@ -31,6 +31,7 @@ var resizeRequest = [
 resizeRequest = new RegExp(resizeRequest);
 
 app.get(resizeRequest, function (req, res) {
+  req.params['query'] = req.query;
   resize.resize(req.params, function (err, file) {
     if (err) {
       res.json(err.status, err);
