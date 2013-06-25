@@ -5,7 +5,7 @@
     "express": "3.0.1",
     "jade": "0.27.7",
     "request": "2.11.4",
-    "step": "0.0.5"
+    "q": "~0.9.6"
   },
   "devDependencies": {
     "sinon-chai": "~2.4.0",
