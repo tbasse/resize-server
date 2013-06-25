@@ -1,10 +1,10 @@
-/*global chai,describe,it*/
+/*global describe, it*/
 'use strict';
 
 var helper = require('../lib/helper.js');
 var expect = require('chai').expect;
 
-describe('getFileSuffix', function () {
+describe('helper.getFileSuffix()', function () {
 
   it('is a function', function () {
     expect(helper.getFileSuffix).to.be.an.instanceOf(Function);
@@ -20,7 +20,7 @@ describe('getFileSuffix', function () {
     expect(helper.getFileSuffix(str)).to.equal('png');
   });
 
-  it('returns correct suffix on none dot filenames', function () {
+  it('returns no suffix on none dot filenames', function () {
     var str = 'this_has_no_suffix';
     expect(helper.getFileSuffix(str)).to.equal('');
   });
