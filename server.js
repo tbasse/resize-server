@@ -1,9 +1,10 @@
 'use strict';
 
-var express = require('express'),
-    config  = require('./config'),
-    log     = require('./lib/log'),
-    resize  = require('./lib/resize');
+var express         = require('express'),
+    config          = require('./config'),
+    log             = require('./lib/log'),
+    RequestSplitter = require('./lib/requestsplitter'),
+    resize          = require('./lib/resize');
 
 var app  = express();
 app.use(express.bodyParser())
@@ -22,17 +23,10 @@ app.get('/', function (req, res) {
   res.render('help', params);
 });
 
-var resizeRequest = [
-    '^\/?([0-9a-zA-Z]+)?\/',
-    '(c|w|h)?([0-9]+)x?([0-9]+)?,?',
-    '(e|w|n(?:e|w)?|s(?:e|w)?)?\/?',
-    '(png|jpg)?,?([0-9]+)?\/(.*)$'
-  ].join('');
-resizeRequest = new RegExp(resizeRequest);
+app.get(RequestSplitter.urlMatch, function (req, res) {
+  var rs = new RequestSplitter(req.path, req.query);
 
-app.get(resizeRequest, function (req, res) {
-  req.params['query'] = req.query;
-  resize.resize(req.params, function (err, file) {
+  resize.resize(rs.mapOptions(), function (err, file) {
     if (err) {
       res.json(err.status, err);
     } else {
@@ -43,5 +37,3 @@ app.get(resizeRequest, function (req, res) {
 
 log.write('resize server listening on ' + config.appPort);
 app.listen(config.appPort);
-
-
