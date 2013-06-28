@@ -4,7 +4,7 @@ var express         = require('express'),
     config          = require('./config'),
     log             = require('./lib/log'),
     RequestSplitter = require('./lib/requestsplitter'),
-    resize          = require('./lib/resize');
+    ResizeJob       = require('./lib/resize').ResizeJob;
 
 var app  = express();
 app.use(express.bodyParser())
@@ -26,13 +26,15 @@ app.get('/', function (req, res) {
 app.get(RequestSplitter.urlMatch, function (req, res) {
   var rs = new RequestSplitter(req.path, req.query);
 
-  resize.resize(rs.mapOptions(), function (err, file) {
+  var rj = new ResizeJob(rs.mapOptions(), function (err, file) {
     if (err) {
       res.json(err.status, err);
     } else {
       res.sendfile(file);
     }
   });
+  rj.startResize();
+
 });
 
 log.write('resize server listening on ' + config.appPort);
