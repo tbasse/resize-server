@@ -52,4 +52,37 @@ describe('ResizeJob', function () {
     expect(rj.convertImage).to.be.an.instanceOf(Function);
   });
 
+  it('has a method startResize', function () {
+    var rj = new ResizeJob();
+    expect(rj.startResize).to.be.an.instanceOf(Function);
+  });
+
+  describe('startResize()', function () {
+
+    it('returns a boolean', function () {
+      var options = {
+        url: ''
+      };
+      var rj = new ResizeJob(options, function () {});
+      expect(rj.validateRemoteSource()).to.be.a('boolean');
+    });
+
+    it('returns false on invalid #options.url', function () {
+      var options = {
+        url: ''
+      };
+      var rj = new ResizeJob(options, function () {});
+      expect(rj.validateRemoteSource()).to.equal(false);
+    });
+
+    it('returns true on valid #options.url', function () {
+      var options = {
+        url: 'http://domain.com/path/image.jog'
+      };
+      var rj = new ResizeJob(options, function () {});
+      expect(rj.validateRemoteSource()).to.equal(true);
+    });
+
+  });
+
 });
