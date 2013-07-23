@@ -16,6 +16,11 @@ describe('ResizeJob', function () {
     expect(rj.generateCacheFilename).to.be.an.instanceOf(Function);
   });
 
+  it('has a method isAlreadyCached', function () {
+    var rj = new ResizeJob();
+    expect(rj.isAlreadyCached).to.be.an.instanceOf(Function);
+  });
+
   describe('generateCacheFilename()', function () {
 
     it('returns a string', function () {
@@ -50,6 +55,58 @@ describe('ResizeJob', function () {
   it('has a method convertImage', function () {
     var rj = new ResizeJob();
     expect(rj.convertImage).to.be.an.instanceOf(Function);
+  });
+
+  describe('isAlreadyCached()', function () {
+
+    it('returns a boolean', function (done) {
+      var options = {
+        imagefile: 'teststring',
+        suffix: '.jpg'
+      };
+      var filename = 'resize.js';
+      var rj = new ResizeJob(options);
+      rj.isAlreadyCached(filename, function (result) {
+        if (typeof result === 'boolean') {
+          done();
+        } else {
+          throw new Error('returned ' + typeof result);
+        }
+      });
+    });
+
+    it('returns false if file does not exists', function (done) {
+      var options = {
+        imagefile: 'teststring',
+        suffix: '.jpg'
+      };
+      var filename = 'xxx.yy';
+      var rj = new ResizeJob(options);
+      rj.isAlreadyCached(filename, function (result) {
+        if (! result) {
+          done();
+        } else {
+          throw new Error('returned ' + result);
+        }
+      });
+    });
+
+    it('returns true if file does exists', function (done) {
+      var options = {
+        imagefile: 'teststring',
+        suffix: '.jpg'
+      };
+      var filename = __filename;
+      var rj = new ResizeJob(options);
+      rj.isAlreadyCached(filename, function (result) {
+        if (result) {
+          done();
+        } else {
+          throw new Error('returned ' + result);
+        }
+      });
+    });
+
   });
 
 });
