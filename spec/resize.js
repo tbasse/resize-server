@@ -21,6 +21,11 @@ describe('ResizeJob', function () {
     expect(rj.isAlreadyCached).to.be.an.instanceOf(Function);
   });
 
+  it('has a method validateRemoteSource', function () {
+    var rj = new ResizeJob();
+    expect(rj.validateRemoteSource).to.be.an.instanceOf(Function);
+  });
+
   describe('generateCacheFilename()', function () {
 
     it('returns a string', function () {
@@ -105,6 +110,34 @@ describe('ResizeJob', function () {
           throw new Error('returned ' + result);
         }
       });
+    });
+
+  });
+
+  describe('validateRemoteSource()', function () {
+
+    it('returns a boolean', function () {
+      var options = {
+        url: ''
+      };
+      var rj = new ResizeJob(options, function () {});
+      expect(rj.validateRemoteSource()).to.be.a('boolean');
+    });
+
+    it('returns false on invalid #options.url', function () {
+      var options = {
+        url: 'domain.com/path/image.jog'
+      };
+      var rj = new ResizeJob(options, function () {});
+      expect(rj.validateRemoteSource()).to.equal(false);
+    });
+
+    it('returns true on valid #options.url', function () {
+      var options = {
+        url: 'http://domain.com/path/image.jog'
+      };
+      var rj = new ResizeJob(options, function () {});
+      expect(rj.validateRemoteSource()).to.equal(true);
     });
 
   });
