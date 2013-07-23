@@ -12,6 +12,8 @@
     "chai": "~1.7.0",
     "sinon": "~1.7.3",
     "grunt": "~0.4.1",
-    "grunt-mocha-test": "~0.5.0"
+    "grunt-mocha-test": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.1",
+    "grunt-clear": "~0.2.1"
   }
 }
