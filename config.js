@@ -4,8 +4,8 @@ var config = {
   appPort: 5060,
   appStdOut: true,
   convertCmd: 'convert',
-  tmpDirectory: './tmp/',
-  cacheDirectory: './cache/'
+  tmpDirectory: __dirname + '/tmp/',
+  cacheDirectory: __dirname + '/cache/'
 };
 
 module.exports = config;
