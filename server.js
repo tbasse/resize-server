@@ -25,14 +25,16 @@ app.get('/', function (req, res) {
 
 app.get(RequestSplitter.urlMatch, function (req, res) {
   var rs = new RequestSplitter(req.path, req.query);
-
   var rj = new ResizeJob(rs.mapOptions(), function (err, file) {
     if (err) {
       res.json(err.status, err);
     } else {
+      res.header('Cache-Control:', 'public, max-age=315360000');
+      res.header('Expires:', new Date(new Date().getTime() + 1209600000));
       res.sendfile(file);
     }
   });
+
   rj.startResize();
 
 });
