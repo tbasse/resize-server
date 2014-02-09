@@ -29,9 +29,8 @@ app.get(RequestSplitter.urlMatch, function (req, res) {
     if (err) {
       res.json(err.status, err);
     } else {
-      res.header('Cache-Control:', 'public, max-age=315360000');
       res.header('Expires:', new Date(new Date().getTime() + 1209600000));
-      res.sendfile(file);
+      res.sendfile(file, {maxAge: 315360000});
     }
   });
 
