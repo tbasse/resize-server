@@ -37,8 +37,8 @@ app.get(RequestSplitter.urlMatch, function (req, res) {
       if (cached) {
         jobDuration = 0;
       }
-      res.header('Resize-Job-Duration:', jobDuration);
-      res.header('Expires:', new Date(new Date().getTime() + 1209600000));
+      res.header('Resize-Job-Duration', jobDuration);
+      res.header('Expires', new Date(new Date().getTime() + 1209600000));
       res.sendfile(file, {maxAge: 315360000});
     }
   });
