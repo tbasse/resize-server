@@ -38,13 +38,12 @@ app.get(RequestSplitter.urlMatch, function (req, res) {
         jobDuration = 0;
       }
       res.header('Resize-Job-Duration', jobDuration);
-      res.header('Expires', new Date(new Date().getTime() + 1209600000));
-      res.sendfile(file, {maxAge: 315360000});
+      res.header('Expires', new Date(new Date().getTime() + config.cacheHeader.expires));
+      res.sendfile(file, {maxAge: config.cacheHeader.maxAge});
     }
   });
 
   rj.startResize();
-
 });
 
 log.write('resize server listening on ' + config.appPort);
