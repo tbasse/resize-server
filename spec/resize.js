@@ -106,28 +106,60 @@ describe('ResizeJob', function () {
 
   describe('validateRemoteSource()', function () {
 
-    it('returns a boolean', function () {
-      var options = {
-        url: ''
-      };
-      var rj = new ResizeJob(options, function () {});
-      expect(rj.validateRemoteSource()).to.be.a('boolean');
-    });
-
-    it('returns false on invalid #options.url', function () {
+    it('returns status code 400 on invalid urls', function (done) {
       var options = {
         url: 'domain.com/path/image.jog'
       };
       var rj = new ResizeJob(options, function () {});
-      expect(rj.validateRemoteSource()).to.equal(false);
+      rj.validateRemoteSource(function (result) {
+        if (result === 400) {
+          done();
+        } else {
+          throw new Error('returned ' + result);
+        }
+      });
     });
 
-    it('returns true on valid #options.url', function () {
+    it('returns status code 404 on not existing urls', function (done) {
       var options = {
-        url: 'http://domain.com/path/image.jog'
+        url: 'http://www.google.de/noimagehere.jpg'
       };
       var rj = new ResizeJob(options, function () {});
-      expect(rj.validateRemoteSource()).to.equal(true);
+      rj.validateRemoteSource(function (result) {
+        if (result === 404) {
+          done();
+        } else {
+          throw new Error('returned ' + result);
+        }
+      });
+    });
+
+    it('returns status code 415 on non image urls', function (done) {
+      var options = {
+        url: 'http://www.google.de/'
+      };
+      var rj = new ResizeJob(options, function () {});
+      rj.validateRemoteSource(function (result) {
+        if (result === 415) {
+          done();
+        } else {
+          throw new Error('returned ' + result);
+        }
+      });
+    });
+
+    it('returns status code 200 on valid images', function (done) {
+      var options = {
+        url: 'https://www.google.de/images/srpr/logo11w.png'
+      };
+      var rj = new ResizeJob(options, function () {});
+      rj.validateRemoteSource(function (result) {
+        if (result === 200) {
+          done();
+        } else {
+          throw new Error('returned ' + result);
+        }
+      });
     });
 
   });
