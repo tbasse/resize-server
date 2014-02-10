@@ -22,21 +22,18 @@
   "maxstatements": 40,
   "maxlen": 80,
   "maxerr": 200,
-
   "sub": true,
   "camelcase": false,
-
   "predef": [
-    "describe",
-    "it",
-    "before",
-    "beforeEach",
-    "after",
-    "afterEach",
-    "define",
-    "require"
+  "describe",
+  "it",
+  "before",
+  "beforeEach",
+  "after",
+  "afterEach",
+  "define",
+  "require"
   ],
-
   "node": true,
   "browser": true,
   "jquery": true,

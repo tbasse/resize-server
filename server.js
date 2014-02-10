@@ -24,9 +24,12 @@ app.get('/', function (req, res) {
 });
 
 app.get(RequestSplitter.urlMatch, function (req, res) {
-  var jobStartTime, jobEndTime, jobDuration;
+  var now,
+      jobStartTime,
+      jobEndTime,
+      jobDuration;
 
-  jobStartTime = new Date().getTime();
+  now = jobStartTime = new Date().getTime();
   var rs = new RequestSplitter(req.path, req.query);
   var rj = new ResizeJob(rs.mapOptions(), function (err, file, cached) {
     if (err) {
@@ -38,7 +41,7 @@ app.get(RequestSplitter.urlMatch, function (req, res) {
         jobDuration = 0;
       }
       res.header('Resize-Job-Duration', jobDuration);
-      res.header('Expires', new Date(new Date().getTime() + config.cacheHeader.expires));
+      res.header('Expires', new Date(now + config.cacheHeader.expires));
       res.sendfile(file, {maxAge: config.cacheHeader.maxAge});
     }
   });
