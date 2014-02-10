@@ -103,7 +103,7 @@ describe('ImageMagickCommand', function () {
         'first',
         'second'
       );
-      expect(im.buildCommandString()).to.be.a('string');
+      expect(im.buildCommandString()).to.be.a('array');
     });
 
   });

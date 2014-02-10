@@ -52,16 +52,6 @@ describe('ResizeJob', function () {
 
   });
 
-  it('has a method downloadRemoteImage', function () {
-    var rj = new ResizeJob();
-    expect(rj.downloadRemoteImage).to.be.an.instanceOf(Function);
-  });
-
-  it('has a method convertImage', function () {
-    var rj = new ResizeJob();
-    expect(rj.convertImage).to.be.an.instanceOf(Function);
-  });
-
   describe('isAlreadyCached()', function () {
 
     it('returns a boolean', function (done) {
