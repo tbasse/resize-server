@@ -5,7 +5,6 @@
 -  `appPort` The port the server will be listening on
 -  `appStdOut` Set to `false` to prevent stdout logging
 -  `convertCmd` Path to imagemagicks `convert`
--  `tmpDirectory` Directory to save temporary image downloads to
 -  `cacheDirectory` Directory to save converted images to
 
 ## Usage
