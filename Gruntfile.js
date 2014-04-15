@@ -16,6 +16,14 @@ module.exports = function (grunt) {
       tasks: ['clear']
     },
     watch: {
+      grunt: {
+        files: [
+          'Gruntfile.js'
+        ],
+        tasks: [
+          'default'
+        ],
+      },
       test: {
         files: [
           'server.js',
