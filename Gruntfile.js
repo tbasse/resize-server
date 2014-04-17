@@ -42,6 +42,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-clear');
 
+  grunt.registerTask('test', [
+    'mochaTest'
+  ]);
+
   grunt.registerTask('default', [
     'clear',
     'mochaTest'
