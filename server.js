@@ -18,7 +18,8 @@ app.use(function (req, res, next) {
 
 app.get('/', function (req, res) {
   var params = {
-    layout: false
+    layout: false,
+    hostname: req.headers.host
   };
   res.render('help', params);
 });
