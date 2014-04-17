@@ -16,6 +16,14 @@ module.exports = function (grunt) {
       tasks: ['clear']
     },
     watch: {
+      grunt: {
+        files: [
+          'Gruntfile.js'
+        ],
+        tasks: [
+          'default'
+        ],
+      },
       test: {
         files: [
           'server.js',
@@ -33,6 +41,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-clear');
+
+  grunt.registerTask('test', [
+    'mochaTest'
+  ]);
 
   grunt.registerTask('default', [
     'clear',

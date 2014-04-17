@@ -28,7 +28,7 @@ html(lang='en')
     #wrapper
       h1#asimplenode.jsimageresizeservice A simple node.js image resize service
       p
-        | usage: http://serveraddress/
+        | usage: http://#{hostname}/
         code resize
         | /
         code output
@@ -115,12 +115,12 @@ html(lang='en')
         li A valid URL to the source image to be resized
       h2#examples Examples
       p
-        code http://serveraddress/120x160/jpg/http://domain.com/image.jpg
+        code http://#{hostname}/120x160/jpg/http://domain.com/image.jpg
         br
-        code http://serveraddress/c300x300/jpg/http://domain.com/image.jpg
+        code http://#{hostname}/c300x300/jpg/http://domain.com/image.jpg
         br
-        code http://serveraddress/c300x300n/jpg/http://domain.com/image.jpg
+        code http://#{hostname}/c300x300n/jpg/http://domain.com/image.jpg
         br
-        code http://serveraddress/h300/jpg/http://domain.com/image.jpg
+        code http://#{hostname}/h300/jpg/http://domain.com/image.jpg
         br
-        code http://serveraddress/w300/jpg,100/http://domain.com/image.jpg
+        code http://#{hostname}/w300/jpg,100/http://domain.com/image.jpg
