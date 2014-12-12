@@ -1,10 +1,15 @@
 'use strict';
 
 var express         = require('express'),
+    fs              = require('fs'),
     config          = require('./config'),
     log             = require('./lib/log'),
     RequestSplitter = require('./lib/requestsplitter'),
     ResizeJob       = require('./lib/resize').ResizeJob;
+
+if (!fs.existsSync(config.cacheDirectory)) {
+  fs.mkdirSync(config.cacheDirectory);
+}
 
 var app  = express();
 app.use(express.bodyParser())
