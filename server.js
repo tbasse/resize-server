@@ -21,6 +21,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get('/health', function (req, res) {
+  res.send('OK').end();
+});
+
 app.get('/', function (req, res) {
   var params = {
     layout: false,
