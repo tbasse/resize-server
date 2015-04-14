@@ -1,7 +1,7 @@
 'use strict';
 
 var config = {
-  appPort: process.ENV.PORT || 5060,
+  appPort: process.env.PORT || 5060,
   appStdOut: true,
   convertCmd: 'convert',
   cacheDirectory: __dirname + '/cache/',
