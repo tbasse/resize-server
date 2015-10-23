@@ -1,11 +1,11 @@
 'use strict';
 
-var express         = require('express'),
-    fs              = require('fs'),
-    config          = require('./config'),
-    log             = require('./lib/log'),
-    RequestSplitter = require('./lib/requestsplitter'),
-    ResizeJob       = require('./lib/resize').ResizeJob;
+var express         = require('express');
+var fs              = require('fs');
+var config          = require('./config');
+var log             = require('./lib/log');
+var RequestSplitter = require('./lib/requestsplitter');
+var ResizeJob       = require('./lib/resize').ResizeJob;
 
 if (!fs.existsSync(config.cacheDirectory)) {
   fs.mkdirSync(config.cacheDirectory);
@@ -47,6 +47,7 @@ app.get(RequestSplitter.urlMatch, function (req, res) {
     } else {
       jobEndTime = new Date().getTime();
       jobDuration = jobEndTime - jobStartTime;
+
       if (cached) {
         jobDuration = 0;
       }

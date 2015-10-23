@@ -79,7 +79,7 @@ describe('ResizeJob', function () {
       var filename = 'xxx.yy';
       var rj = new ResizeJob(options);
       rj.isAlreadyCached(filename, function (result) {
-        if (! result) {
+        if (!result) {
           done();
         } else {
           throw new Error('returned ' + result);
