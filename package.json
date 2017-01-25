@@ -1,6 +1,6 @@
 {
   "name": "resize-server",
-  "version": "0.4.2",
+  "version": "1.0.0",
   "description": "A simple node.js image resize service",
   "main": "server.js",
   "dependencies": {
