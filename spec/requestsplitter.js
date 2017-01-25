@@ -83,7 +83,7 @@ describe('RequestSplitter', function () {
       expect(options.height).to.equal('400');
       expect(options.gravity).to.equal('n');
       expect(options.format).to.equal('jpg');
-      expect(options.quality).to.equal('75');
+      expect(options.quality).to.equal(75);
       expect(options.imagefile).to.equal(
         'http://trakt.us/images/posters/892.jpg'
       );
