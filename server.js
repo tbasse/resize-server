@@ -43,18 +43,18 @@ app.get(RequestSplitter.urlMatch, function (req, res) {
   var rs = new RequestSplitter(req.path, req.query);
   var rj = new ResizeJob(rs.mapOptions(), function (err, file, cached) {
     if (err) {
-      res.json(err.status, err);
-    } else {
-      jobEndTime = new Date().getTime();
-      jobDuration = jobEndTime - jobStartTime;
-
-      if (cached) {
-        jobDuration = 0;
-      }
-      res.header('X-ResizeJobDuration', jobDuration);
-      res.header('Expires', new Date(now + config.cacheHeader.expires));
-      res.sendfile(file, {maxAge: config.cacheHeader.maxAge});
+      return res.json(err.status, err);
     }
+
+    jobEndTime = new Date().getTime();
+    jobDuration = jobEndTime - jobStartTime;
+
+    if (cached) {
+      jobDuration = 0;
+    }
+    res.header('X-ResizeJobDuration', jobDuration);
+    res.header('Expires', new Date(now + config.cacheHeader.expires));
+    res.sendfile(file, {maxAge: config.cacheHeader.maxAge});
   });
 
   rj.startResize();
