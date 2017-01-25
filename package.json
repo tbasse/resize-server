@@ -1,8 +1,12 @@
 {
   "name": "resize-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple node.js image resize service",
   "main": "server.js",
+  "scripts": {
+    "test": "grunt test",
+    "watch": "grunt watch"
+  },
   "dependencies": {
     "express": "3.0.1",
     "jade": "0.27.7",
@@ -10,13 +14,14 @@
     "q": "~0.9.6"
   },
   "devDependencies": {
-    "sinon-chai": "~2.4.0",
     "chai": "~1.7.0",
-    "sinon": "~1.7.3",
     "grunt": "~0.4.1",
-    "grunt-mocha-test": "~0.5.0",
+    "grunt-clear": "~0.2.1",
+    "grunt-cli": "^1.2.0",
     "grunt-contrib-watch": "~0.5.1",
-    "grunt-clear": "~0.2.1"
+    "grunt-mocha-test": "~0.5.0",
+    "sinon": "~1.7.3",
+    "sinon-chai": "~2.4.0"
   },
   "license": "MIT"
 }
