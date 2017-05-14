@@ -2,6 +2,7 @@
 
 var express         = require('express');
 var fs              = require('fs');
+var bodyParser      = require('body-parser');
 var config          = require('./config');
 var log             = require('./lib/log');
 var RequestSplitter = require('./lib/requestsplitter');
@@ -11,8 +12,8 @@ if (!fs.existsSync(config.cacheDirectory)) {
   fs.mkdirSync(config.cacheDirectory);
 }
 
-var app  = express.Router();
-app.use(express.bodyParser());
+var app  = new express.Router();
+app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
   res.removeHeader('X-Powered-By');
@@ -48,7 +49,7 @@ app.get(RequestSplitter.urlMatch, function (req, res) {
     }
     res.header('X-ResizeJobDuration', jobDuration);
     res.header('Expires', new Date(now + config.cacheHeader.expires));
-    res.sendfile(file, {maxAge: config.cacheHeader.maxAge});
+    res.sendFile(file, {maxAge: config.cacheHeader.maxAge});
   });
 
   rj.startResize();
