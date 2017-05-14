@@ -11,10 +11,8 @@ if (!fs.existsSync(config.cacheDirectory)) {
   fs.mkdirSync(config.cacheDirectory);
 }
 
-var app  = express();
-app.use(express.bodyParser())
-   .set('view engine', 'jade')
-   .set('views', __dirname + '/views');
+var app  = express.Router();
+app.use(express.bodyParser());
 
 app.use(function (req, res, next) {
   res.removeHeader('X-Powered-By');
@@ -26,11 +24,7 @@ app.get('/health', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  var params = {
-    layout: false,
-    hostname: req.headers.host
-  };
-  res.render('help', params);
+  res.send("Hello").end();
 });
 
 app.get(RequestSplitter.urlMatch, function (req, res) {
@@ -60,5 +54,4 @@ app.get(RequestSplitter.urlMatch, function (req, res) {
   rj.startResize();
 });
 
-log.write('resize server listening on ' + config.appPort);
-app.listen(config.appPort);
+module.exports = app;
