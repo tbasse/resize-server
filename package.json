@@ -1,5 +1,5 @@
 {
-  "name": "resize-server",
+  "name": "express-resize-img",
   "version": "1.0.1",
   "description": "A simple node.js image resize service",
   "main": "index.js",
