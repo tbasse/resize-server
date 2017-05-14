@@ -3,6 +3,7 @@
 var express         = require('express');
 var log             = require('./lib/log');
 var resizeApp       = require('./index');
+var config          = require('./config');
 
 var app = express();
 
