@@ -2,7 +2,6 @@
 
 ## Config
 
--  `appPort` The port the server will be listening on
 -  `appStdOut` Set to `false` to prevent stdout logging
 -  `convertCmd` Path to imagemagicks `convert`
 -  `cacheDirectory` Directory to save converted images to
@@ -41,7 +40,6 @@ http://serveraddress/`resize`/`output`/`url`
 `http://serveraddress/c300x300n/jpg/http://domain.com/image.jpg`  
 `http://serveraddress/h300/jpg/http://domain.com/image.jpg`  
 `http://serveraddress/w300/jpg,100/http://domain.com/image.jpg`
-
 
 ## License
 
