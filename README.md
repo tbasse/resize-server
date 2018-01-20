@@ -1,5 +1,29 @@
 # A simple node.js image resize service
 
+This repository is a modification of https://github.com/tbasse/resize-server that is published by me to npm in order to make the image resizing service an express module.
+
+I thank the author of the original repository for making such a great service.
+
+## Installation
+
+```
+npm i --save express-resize-img
+```
+
+## Using in express
+
+```js
+let resizeApp = require('express-resize-img'); 
+let express = require('express');
+let app = express();
+
+// hook the resizing service to a path on your application
+app.use('/resize', resizeApp);
+
+// run
+app.listen(12345); 
+```
+
 ## Config
 
 -  `appStdOut` Set to `false` to prevent stdout logging
