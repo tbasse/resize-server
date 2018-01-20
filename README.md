@@ -24,12 +24,6 @@ app.use('/resize', resizeApp);
 app.listen(12345); 
 ```
 
-## Config
-
--  `appStdOut` Set to `false` to prevent stdout logging
--  `convertCmd` Path to imagemagicks `convert`
--  `cacheDirectory` Directory to save converted images to
-
 ## Usage
 
 http://serveraddress/`resize`/`output`/`url`
