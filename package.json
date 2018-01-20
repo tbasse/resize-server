@@ -1,14 +1,16 @@
 {
-  "name": "resize-server",
-  "version": "1.0.1",
+  "name": "express-resize-img",
+  "version": "1.0.3",
   "description": "A simple node.js image resize service",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "watch": "grunt watch"
+    "watch": "grunt watch",
+    "start": "node server.js"
   },
   "dependencies": {
-    "express": "3.0.1",
+    "express": "^4.15.2",
+    "body-parser": "^1.17.1",
     "jade": "0.27.7",
     "request": "2.11.4",
     "q": "~0.9.6"
